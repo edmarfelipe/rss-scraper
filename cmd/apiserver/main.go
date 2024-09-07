@@ -1,13 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"os"
+	"time"
 
 	"github.com/edmarfelipe/rss-scraper/internal/database"
+	"github.com/edmarfelipe/rss-scraper/internal/scraper"
 	"github.com/edmarfelipe/rss-scraper/internal/server"
-	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -23,8 +25,8 @@ func run() error {
 		return fmt.Errorf("error opening database connection: %w", err)
 	}
 
-	// scraper := scraper.NewScraper(db, 10, 60*time.Second)
-	// go scraper.Start(context.Background())
+	worker := scraper.NewScraper(db, 10, 60*time.Second)
+	go worker.Start(context.Background())
 
 	srv, err := server.NewServer(db)
 	if err != nil {

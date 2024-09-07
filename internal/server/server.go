@@ -17,7 +17,7 @@ func NewServer(db *database.Queries) (*http.Server, error) {
 
 	return &http.Server{
 		Addr:         env.Config.ApiServerAddr,
-		Handler:      mw.LoggingMiddlerware(mux),
+		Handler:      mw.LoggingMiddleware(mux),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,

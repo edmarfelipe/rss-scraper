@@ -16,7 +16,6 @@ func docsHandler(w http.ResponseWriter, r *http.Request) {
 		slog.Error("failed to read OpenAPI spec", "error", err)
 		http.Error(w, "failed to read OpenAPI spec", http.StatusInternalServerError)
 		return
-
 	}
 
 	htmlContent, err := scalar.ApiReferenceHTML(&scalar.Options{

@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/edmarfelipe/rss-scraper/internal/server/openapi"
+
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )

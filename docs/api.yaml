@@ -34,7 +34,6 @@ tags:
     description: Feed operations
   - name: Post
     description: Post operations
-
 paths:
   /users:
     post:
